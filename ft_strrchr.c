@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 12:42:45 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/11/07 00:28:35 by alexmitcul       ###   ########.fr       */
+/*   Created: 2022/11/07 00:22:10 by alexmitcul        #+#    #+#             */
+/*   Updated: 2022/11/07 00:31:34 by alexmitcul       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * The strchr() function locates the first occurrence of c
- * (converted to a char) in the string pointed to by s.
- * The terminating null character is considered to be part of the string;
- * Therefore if c is ‘\0’, the functions locate the terminating ‘\0’
+ * - Description:
+ * The strrchr() function is identical to strchr(), except it
+ * locates the last occurrence of c.
  *
- * The functions strchr() return a pointer to the located character,
+ * - Return value:
+ * The strrchr() return a pointer to the located character,
  * or NULL if the character does not appear in the string.
-*/
+**/
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	unsigned char	symbol;
+	int				i;
 
 	symbol = c;
-	while (*s != '\0')
+	i = ft_strlen(s);
+	if (symbol == '\0' && s[i] == '\0')
+		return ((char *)&s[i]);
+	while (i >= 0)
 	{
-		if (*s == symbol)
-			return ((char *)s);
-		s++;
+		if (s[i] == symbol)
+			return ((char *)&s[i]);
+		i--;
 	}
-	if (*s == '\0' && c == '\0')
-		return ((char *)s);
 	return (NULL);
 }

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amitcul <amitcul@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:23:21 by amitcul           #+#    #+#             */
-/*   Updated: 2022/09/28 11:30:34 by amitcul          ###   ########.fr       */
+/*   Updated: 2022/11/06 22:24:39 by alexmitcul       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	The  strncmp()  function  is similar, except it compares only the 
+**	The  strncmp()  function  is similar, except it compares only the
 **	first (at most) n bytes of s1 and s2.
 **
 **	The strcmp() and strncmp() functions return an integer less than, equal
@@ -19,7 +19,9 @@
 **	respectively, to be less than, to match, or be greater than s2.
 */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (*s1 != '\0' && *s2 != '\0' && n > 0)
 	{

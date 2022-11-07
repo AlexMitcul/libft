@@ -6,7 +6,7 @@
 /*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:15:58 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/10/22 18:44:09 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/06 23:19:50 by alexmitcul       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	s = (char *)src;
 	if (dstsize == 0)
-		return (dstsize);
+		return (ft_strlen(src));
 	len_dst = ft_strlen(dst);
 	len_src = ft_strlen(src);
 	res = 0;

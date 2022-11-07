@@ -6,7 +6,7 @@
 /*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:25:45 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/10/21 18:42:03 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/07 00:21:30 by alexmitcul       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,27 @@
 
 #include "libft.h"
 
+#include <stdio.h>
+
+static int	is_overflow(size_t a, size_t b)
+{
+	size_t	x;
+
+	x = a * b;
+	if (a != 0 && x / a != b)
+		return (1);
+	return (0);
+}
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*res;
 
-	res = (void *)malloc(count * size);
+	if (count == 0 || size == 0 || is_overflow(count, size))
+		return (NULL);
+	res = malloc(count * size);
 	if (!res)
 		return (NULL);
-	bzero(res, count * size);
+	ft_bzero(res, count * size);
 	return (res);
 }
