@@ -6,7 +6,7 @@
 #    By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 22:15:31 by alexmitcul        #+#    #+#              #
-#    Updated: 2022/11/07 01:28:51 by alexmitcul       ###   ########.fr        #
+#    Updated: 2022/11/25 05:05:52 by alexmitcu        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BONUS			=	ft_lstadd_back.c ft_lstadd_front.c \
 
 BONUS_OBJS		= $(BONUS:.c=.o)
 
-CC				= gcc
+CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
 
