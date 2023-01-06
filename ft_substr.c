@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
+/*   By: amitcul <amitcul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:50:39 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/10/20 19:48:09 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/26 13:41:42 by amitcul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*res;
 
@@ -35,11 +35,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (ft_strlen(s) < start)
 		len = 0;
-	if (ft_strlen(s + start) < len)
+	else if (ft_strlen(s + start) < len)
 		len = ft_strlen(s + start);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	ft_strlcpy(res, s + start, len + 1);
+	if (len == 0)
+		res[0] = '\0';
+	else
+		ft_strlcpy(res, s + start, len + 1);
 	return (res);
 }

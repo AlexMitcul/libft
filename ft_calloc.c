@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
+/*   By: amitcul <amitcul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:25:45 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/11/07 00:21:30 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/26 12:15:58 by amitcul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 #include <stdio.h>
 
+/*
 static int	is_overflow(size_t a, size_t b)
 {
 	size_t	x;
@@ -30,13 +31,15 @@ static int	is_overflow(size_t a, size_t b)
 		return (1);
 	return (0);
 }
-
+*/
+/*
+if (count == 0 || size == 0 || is_overflow(count, size))
+		return (NULL);
+		*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*res;
 
-	if (count == 0 || size == 0 || is_overflow(count, size))
-		return (NULL);
 	res = malloc(count * size);
 	if (!res)
 		return (NULL);

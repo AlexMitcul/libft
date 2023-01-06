@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
+/*   By: amitcul <amitcul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:15:58 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/11/06 23:19:50 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/26 10:49:15 by amitcul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  *	- It is designed to be safer, more consistent, and less error prone
  *	replacements for the easily misused functions strncat(3).
  *
- *	- strlcat() take the full size of the destination buffer and guarantee
+ *	- strlcat() take the full size of the dstination buffer and guarantee
  *	NUL-termination if there is room.  Note that room for the NUL should be
  *	included in dstsize.
  *
@@ -32,31 +32,28 @@
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char			*s;
-	unsigned int	len_dst;
-	unsigned int	res;
-	unsigned int	len_src;
-	unsigned int	i;
+	size_t	i;
+	size_t	len_dst;
+	size_t	len_src;
+	size_t	res;
+	size_t	n;
 
-	s = (char *)src;
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	len_dst = ft_strlen(dst);
+	if ((dst == NULL) && (size == 0))
+		return (0);
 	len_src = ft_strlen(src);
-	res = 0;
+	len_dst = ft_strlen(dst);
+	if (size < len_dst)
+		return (ft_strlen(src) + size);
 	i = 0;
-	if (dstsize > len_dst)
-		res = len_src + len_dst;
-	else
-		res = len_src + dstsize;
-	while (s[i] && (len_dst + 1) < dstsize)
+	n = size - len_dst;
+	res = len_dst + len_src;
+	while (((i + 1) < n) && (*(src + i) != '\0'))
 	{
-		dst[len_dst] = s[i];
-		len_dst++;
+		*(dst + (len_dst + i)) = *(src + i);
 		i++;
 	}
-	dst[len_dst] = '\0';
+	(*(dst + (len_dst + i)) = '\0');
 	return (res);
 }

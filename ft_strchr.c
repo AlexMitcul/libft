@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
+/*   By: amitcul <amitcul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:42:45 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/11/07 00:28:35 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/26 13:07:28 by amitcul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * The terminating null character is considered to be part of the string;
  * Therefore if c is ‘\0’, the functions locate the terminating ‘\0’
  *
- * The functions strchr() return a pointer to the located character,
+ * The functions strchr() return a pointqer to the located character,
  * or NULL if the character does not appear in the string.
 */
 
@@ -24,16 +24,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	symbol;
+	char	*str;
+	char	symbol;
 
-	symbol = c;
-	while (*s != '\0')
+	str = (char *)s;
+	symbol = (char)c;
+	while (*str != '\0')
 	{
-		if (*s == symbol)
-			return ((char *)s);
-		s++;
+		if (*str == symbol)
+			return (str);
+		str++;
 	}
-	if (*s == '\0' && c == '\0')
-		return ((char *)s);
+	if (*str == '\0' && symbol == '\0')
+		return (str);
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexmitcul <alexmitcul@student.42.fr>      +#+  +:+       +#+        */
+/*   By: amitcul <amitcul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:04:58 by alexmitcul        #+#    #+#             */
-/*   Updated: 2022/11/07 00:14:16 by alexmitcul       ###   ########.fr       */
+/*   Updated: 2022/11/26 10:44:07 by amitcul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,55 +26,22 @@
 
 #include "libft.h"
 
-static void	get_length(char const *line, char const *set, int *start, int *end)
-{
-	int		i;
-	int		len;
-
-	len = ft_strlen(line);
-	i = 0;
-	while (i < len)
-	{
-		if (ft_strchr(set, line[i]) == NULL)
-			break ;
-		i++;
-	}
-	*start = i;
-	i = len - 1;
-	while (i >= 0)
-	{
-		if (ft_strchr(set, line[i]) == NULL)
-			break ;
-		i--;
-	}
-	*end = len - i - 1;
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*res;
+	char	*str;
 	int		i;
-	int		start;
-	int		end;
+	int		j;
 
 	if (s1 == NULL)
 		return (NULL);
 	if (set == NULL)
 		return (ft_strdup(s1));
-	get_length(s1, set, &start, &end);
-	if (start - end == 0)
-		res = malloc(sizeof(char));
-	else
-		res = malloc(sizeof(char) * (ft_strlen(s1) - start - end + 1));
-	if (res == NULL)
-		return (NULL);
 	i = 0;
-	end = ft_strlen(s1) - start - end;
-	while (i < end)
-	{
-		res[i] = s1[start + i];
+	j = (ft_strlen(s1) - 1);
+	while ((*(s1 + i) != '\0') && (ft_strchr(set, *(s1 + i))))
 		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	while ((*(s1 + i) != '\0') && (ft_strchr(set, *(s1 + j))))
+		j--;
+	str = ft_substr(s1, i, ((j - i) + 1));
+	return (str);
 }
