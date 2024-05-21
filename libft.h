@@ -22,10 +22,6 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-/**
- * Part one
-*/
-
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
